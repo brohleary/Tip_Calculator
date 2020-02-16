@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</header>
+<body>
+  <div class="container">
+
+    <div class="card text-center col-md-6 offset-md-3">
+      <div class="card-body">
+        <h1 class="display-4">Tip Calculator</h1>
+
+        <form>
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+            <input type = "text" id = "userInput" placeholder="Bill Amount"></input>
+            <div class="rangeslider">
+              <input type="range" min="1" max="100" value="50" class="myslider" id="sliderRange">
+              <p>Percentage Tip: <span id="demo"></span></p>
+            </div>
+            <button type="button" class="btn btn-warning" id="calculate" value="Calculate">Calculate</button>
+          </div>
+          <table class="table table-dark">
+            <tr>
+              <th scope="row">Total:</th>
+              <th id="total_pay"></th>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+
+    var displayPercentage = function(id, percentage) {
+      document.getElementById(id).innerHTML = percentage; 
+    }
+
+    document.getElementById("calculate").onclick = function(e) {
+        e.preventDefault()
+
+        var input = Number(document.getElementById("userInput").value);
+        var tip_percentage = (input * rangeslider.value / 100) + input;
+
+        displayPercentage("total_pay", tip_percentage)
+        
+      }
+
+    var rangeslider = document.getElementById("sliderRange"); 
+    var output = document.getElementById("demo"); 
+    output.innerHTML = rangeslider.value; 
+
+    rangeslider.oninput = function() { 
+    output.innerHTML = this.value; 
+    }
+
+
+
+ 
+
+        
+</script>
+</body>
+</html>
